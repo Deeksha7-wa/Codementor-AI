@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: codementor-backend
+    env: python
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --app-dir backend
+    envVars:
+      - key: DATABASE_URL
+        value: ""  # leave empty for local SQLite or set to Render DB connection
+      - key: FRONTEND_URL
+        value: "https://your-frontend.onrender.com"
+    runtime: python
