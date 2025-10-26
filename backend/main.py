@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes.submit_code import router
-from db.database import init_db
+from backend.routes.submit_code import router
+from backend.db.database import init_db
 
 app = FastAPI(title="Codementor AI")
 

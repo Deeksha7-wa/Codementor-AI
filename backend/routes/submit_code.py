@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query
-from ..models.code_submission import CodeSubmission
-from ..services.code_evaluator import evaluate_code
-from ..db.database import Submission, SessionLocal
+from backend.models.code_submission import CodeSubmission
+from backend.services.code_evaluator import evaluate_code
+from backend.db.database import Submission, SessionLocal
 import json
 
 router = APIRouter()
