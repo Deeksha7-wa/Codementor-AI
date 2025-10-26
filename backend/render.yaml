@@ -5,11 +5,11 @@ services:
     plan: free
     branch: main
     buildCommand: pip install -r requirements.txt
-    startCommand:  uvicorn backend.main:app --host 0.0.0.0 --port $PORT
-
+    startCommand: >
+      PYTHONPATH=./ uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
-        value: ""  # leave empty for local SQLite or set to Render DB connection
+        value: ""  # optional
       - key: FRONTEND_URL
         value: "https://your-frontend.onrender.com"
-    runtime: python 3.11
+    runtime: python
