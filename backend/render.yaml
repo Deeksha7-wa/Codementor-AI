@@ -12,4 +12,4 @@ services:
         value: ""  # leave empty for local SQLite or set to Render DB connection
       - key: FRONTEND_URL
         value: "https://your-frontend.onrender.com"
-    runtime: python
+    runtime: python 3.11
