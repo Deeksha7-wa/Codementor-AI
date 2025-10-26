@@ -1,0 +1,9 @@
+Device set to use mps:0
+INFO:     Started server process [3877]
+INFO:     Waiting for application startup.
+2025-10-22 06:47:14,300 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-10-22 06:47:14,300 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("submissions")
+2025-10-22 06:47:14,300 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-10-22 06:47:14,300 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
