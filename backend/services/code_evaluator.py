@@ -2,7 +2,7 @@ import ast
 from transformers import pipeline
 
 # Load model once (for code hints)
-code_hint_model = pipeline("text-generation", model="gpt2")  # lightweight for local testing
+code_hint_model = pipeline("text-generation", model="sshleifer/tiny-gpt2")  # lightweight for local testing
 
 def evaluate_python_code(code: str):
     errors = []
