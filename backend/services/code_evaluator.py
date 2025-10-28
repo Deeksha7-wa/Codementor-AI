@@ -1,15 +1,23 @@
 import ast
 from transformers import pipeline
 
-# Load model once (for code hints)
-code_hint_model = pipeline("text-generation", model="sshleifer/tiny-gpt2")  # lightweight for local testing
+# Don't load the model yet — wait until it's first needed
+code_hint_model = None
+
+def get_model():
+    """Load the tiny GPT-2 model only once, when first used."""
+    global code_hint_model
+    if code_hint_model is None:
+        code_hint_model = pipeline("text-generation", model="sshleifer/tiny-gpt2")
+    return code_hint_model
+
 
 def evaluate_python_code(code: str):
     errors = []
     hints = []
     suggestions = []
 
-    # Static analysis
+    # --- Static analysis ---
     try:
         ast.parse(code)
         hints.append("Code syntax is correct.")
@@ -19,9 +27,10 @@ def evaluate_python_code(code: str):
 
     suggestions.append("Consider using functions for reusable code blocks.")
 
-    # AI-generated hints
+    # --- AI-generated hints ---
+    model = get_model()  # Load only when first needed
     prompt = f"Suggest improvements or hints for this Python code:\n{code}\nHints:"
-    ai_result = code_hint_model(prompt, max_length=100, num_return_sequences=1)
+    ai_result = model(prompt, max_length=100, num_return_sequences=1)
     ai_text = ai_result[0]["generated_text"].split("Hints:")[-1].strip()
     if ai_text:
         hints.append(ai_text)
@@ -32,15 +41,18 @@ def evaluate_python_code(code: str):
         "suggestions": suggestions
     }
 
+
 def evaluate_javascript_code(code: str):
-    # Placeholder: for future implementation
+    # Placeholder for future JS analysis
     return {
         "errors": [],
         "hints": ["AI hint support coming soon for JavaScript."],
         "suggestions": []
     }
 
+
 def evaluate_code(language: str, code: str):
+    """Dispatch code evaluation based on language."""
     if language.lower() == "python":
         return evaluate_python_code(code)
     elif language.lower() == "javascript":
@@ -51,3 +63,4 @@ def evaluate_code(language: str, code: str):
             "hints": [],
             "suggestions": []
         }
+
