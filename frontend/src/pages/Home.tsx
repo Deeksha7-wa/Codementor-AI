@@ -5,6 +5,9 @@ import SubmitButton from "../components/SubmitButton";
 import HistoryPanel from "../components/HistoryPanel";
 import axios from "axios";
 
+// ✅ Use your Render backend in production, localhost in development
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
 const Home: React.FC = () => {
   const pageTitle = "Codementor AI";
 
@@ -23,29 +26,29 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const userId = "deeksha"; // Static user for now
 
-  // --- Submit Code (Sync SQLite backend handles saving) ---
+  // --- Submit Code ---
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("http://127.0.0.1:8000/submit-code", {
+      const res = await axios.post(`${API_URL}/submit-code`, {
         language,
         code,
         user_id: userId,
       });
       setFeedback(res.data);
-      await fetchHistory(); // Reload saved history from DB
+      await fetchHistory(); // Reload history
     } catch (err) {
       console.error("Submission error:", err);
-      alert("Error: Make sure FastAPI backend is running on port 8000");
+      alert("Error: Backend might be down or misconfigured.");
     } finally {
       setLoading(false);
     }
   };
 
-  // --- Fetch Submission History (from SQLite via FastAPI) ---
+  // --- Fetch Submission History ---
   const fetchHistory = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/history", {
+      const res = await axios.get(`${API_URL}/history`, {
         params: { user_id: userId },
       });
       setHistory(res.data);
@@ -54,7 +57,7 @@ const Home: React.FC = () => {
     }
   };
 
-  // --- Load history on component mount ---
+  // --- Load history on mount ---
   useEffect(() => {
     fetchHistory();
   }, []);
