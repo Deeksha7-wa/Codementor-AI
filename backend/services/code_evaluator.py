@@ -8,7 +8,7 @@ def get_model():
     """Load the tiny GPT-2 model only once, when first used."""
     global code_hint_model
     if code_hint_model is None:
-        code_hint_model = pipeline("text-generation", model="sshleifer/tiny-gpt2")
+        code_hint_model = pipeline("text-generation", model="distilgpt2")
     return code_hint_model
 
 
