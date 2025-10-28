@@ -4,3 +4,4 @@ pydantic==2.9.2
 transformers==4.57.1
 sqlalchemy>=2.0.20
 aiosqlite>=0.20.0
+torch==2.7.0
