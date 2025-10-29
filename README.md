@@ -17,7 +17,7 @@ Codementor AI analyzes code submissions, detects syntax issues, and provides sma
 ---
 📸 **Demo Preview**
 
-![Codementor AI Demo](frontend/public/demo.png)
+![Codementor AI Demo](frontend/ai.png)
 
 
 ## 🧩 Tech Stack
