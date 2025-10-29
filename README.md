@@ -15,6 +15,10 @@ Codementor AI analyzes code submissions, detects syntax issues, and provides sma
 > ✅ **Try it live:** Select a language, write code, and click “Submit” — Codementor AI will analyze and suggest improvements in real time.
 
 ---
+📸 **Demo Preview**
+
+![Codementor AI Demo](frontend/public/demo.png)
+
 
 ## 🧩 Tech Stack
 
@@ -70,11 +74,15 @@ VITE_API_URL=https://codementor-ai-1.onrender.com
 🧾 Future Enhancements
 
 ✅ Support for Java, C++, and HTML/CSS
+
 🔐 Add user authentication (login & profiles)
+
 🧠 Improve AI model with DistilGPT-2 fine-tuning
+
 ☁️ Store user history on PostgreSQL (cloud)
 
 👩‍💻 Author
+
 Deeksha Wadhwa
 
 
