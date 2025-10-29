@@ -68,18 +68,17 @@ const Home: React.FC = () => {
 
       <div className="mb-4 flex items-center justify-center gap-3">
         <label className="font-semibold">Language:</label>
-        <select
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-          className="border p-2 rounded"
-        >
-          <option value="python">Python</option>
-          <option value="javascript">JavaScript</option>
-          <option value="java">Java</option>
-          <option value="cpp">C++</option>
-          <option value="c">C</option>
-          <option value="html">HTML</option>
-        </select>
+     <select
+  value={language}
+  onChange={(e) => setLanguage(e.target.value)}
+  className="border p-2 rounded"
+>
+  <option value="python">Python</option>
+  <option value="javascript">JavaScript</option>
+  <option disabled>──────────</option>
+  <option disabled>More languages coming soon</option>
+</select>
+
       </div>
 
       <CodeEditor code={code} setCode={setCode} language={language} />
