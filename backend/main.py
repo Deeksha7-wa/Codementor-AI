@@ -31,7 +31,7 @@ def startup_event():
     init_db()
 
 # --- Health check endpoint ---
-@app.api_route("/", methods=["GET", "HEAD"])
+@app.get("/")
 def root():
     return {"message": "Backend is running!"}
 
