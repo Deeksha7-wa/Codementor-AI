@@ -9,9 +9,9 @@ app = FastAPI(title="Codementor AI")
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://codementor-ai-1.onrender.com",  # your backend (self)
-    "https://codementor-ai.vercel.app",      # replace with your Vercel frontend URL
-    "*"  # fallback for safety (can remove once your domain is fixed)
+    "https://codementor-ai-1.onrender.com",  # your backend (Render)
+    "https://codementor-ai.vercel.app",      # your frontend (Vercel)
+    "*",  # fallback (optional)
 ]
 
 app.add_middleware(
@@ -22,16 +22,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- Include routes ---
+# --- Include API routes ---
 app.include_router(router)
 
-# --- Database setup on startup ---
+# --- Startup: Initialize DB only ---
 @app.on_event("startup")
 def startup_event():
     init_db()
 
-# --- Health check endpoint ---
-@app.get("/")
+# --- Health check endpoint (for Render ping) ---
+@app.api_route("/", methods=["GET", "HEAD"])
 def root():
     return {"message": "Backend is running!"}
 
