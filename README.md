@@ -9,7 +9,7 @@ Codementor AI analyzes code submissions, detects syntax issues, and provides sma
 
 | Service | URL |
 |----------|-----|
-| 🖥️ **Frontend (Vercel)** | [https://codementor-ai.vercel.app](https://codementor-ai.vercel.app) |
+| 🖥️ **Frontend (Vercel)** | [https://codementor-ai.vercel.app](https:/codementor-ai-tau.vercel.app) |
 | ⚙️ **Backend (Render)** | [https://codementor-ai-1.onrender.com](https://codementor-ai-1.onrender.com) |
 
 > ✅ **Try it live:** Select a language, write code, and click “Submit” — Codementor AI will analyze and suggest improvements in real time.
